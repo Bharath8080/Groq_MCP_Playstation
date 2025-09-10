@@ -181,7 +181,7 @@ if prompt := st.chat_input("Ask me anything..."):
                     full_response + " <img src='https://media.tenor.com/HiVVJv-skJcAAAAM/pac-man.gif' width='22' style='vertical-align: middle;'/>",
                     unsafe_allow_html=True
                 )
-                time.sleep(0.03)
+                time.sleep(0.00000000000000000000000000000001)
 
         # Final text
         message_placeholder.markdown(full_response)
