@@ -62,7 +62,8 @@ USER_AVATAR = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_ic
 # Maintain chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "👋 Hi! I'm your Deep Research assistant — I conduct structured, multi-step investigations using reasoning, live web data, and reliable sources to deliver accurate, well-organized insights with citations, summaries, and actionable recommendations while maintaining clarity, professionalism, and focus on your goals."}
+        {"role": "assistant", "content": "👋 Hi! I'm your Deep Research assistant — I perform multi-step investigations with reasoning, fetching live web data, news, scholarly papers, PDFs, official sites, blogs, and YouTube videos, then provide accurate summaries, source URLs, citations, and actionable insights in a clear, well-organized, professional format tailored to your goals."}
+
     ]
 
 # Display history
