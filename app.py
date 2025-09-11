@@ -47,12 +47,9 @@ st.sidebar.subheader("🔌 MCP Tools")
 use_exa = st.sidebar.checkbox("Exa Search", value=True)
 use_tavily = st.sidebar.checkbox("Tavily Search", value=False)
 use_serper = st.sidebar.checkbox("Serper Search", value=False)
-use_serpapi = st.sidebar.checkbox("SerpAPI Search", value=False)
 use_linkup = st.sidebar.checkbox("LinkUp Search", value=False)
 use_twitter = st.sidebar.checkbox("Twitter", value=False)
-use_email = st.sidebar.checkbox("Email", value=False)
-use_linkedin = st.sidebar.checkbox("LinkedIn", value=False)
-use_youtube = st.sidebar.checkbox("YouTube", value=False)
+
 
 
 # Initialize Groq client
@@ -111,13 +108,7 @@ if prompt := st.chat_input("Ask me anything..."):
                 "server_url": f"https://server.smithery.ai/@marcopesani/mcp-server-serper/mcp?api_key=318135fb-4ad4-4437-b916-9e19a8840f62&profile=yearning-rattlesnake-WM9iJg",
                 "headers": {}
             })
-        if use_serpapi:
-            tools.append({
-                "type": "mcp",
-                "server_label": "SerpAPI",
-                "server_url": f"https://apollo-fqsfjtjku-composio.vercel.app/v3/mcp/35998619-3d9e-4bbe-bbe3-d2ccb6be4f1f/mcp?useComposioHelperActions=true",
-                "headers": {}
-            })
+        
         if use_linkup:
             tools.append({
                 "type": "mcp",
@@ -132,27 +123,7 @@ if prompt := st.chat_input("Ask me anything..."):
                 "server_url": f"https://apollo-khnbaduxb-composio.vercel.app/v3/mcp/9ee40a54-f652-4d93-8807-9ce8da07affa/mcp?include_composio_helper_actions=true",
                 "headers": {}
             })
-        if use_email:
-            tools.append({
-                "type": "mcp",
-                "server_label": "Email",
-                "server_url": f"https://apollo-fqsfjtjku-composio.vercel.app/v3/mcp/f9ad3369-372c-4264-babc-1822cd172d20/mcp?useComposioHelperActions=true",
-                "headers": {}
-            })
-        if use_linkedin:
-            tools.append({
-                "type": "mcp",
-                "server_label": "LinkedIn",
-                "server_url": f"https://apollo-khnbaduxb-composio.vercel.app/v3/mcp/bf12d9ed-fee6-446d-84c2-cfbe173522ae/mcp?include_composio_helper_actions=true",
-                "headers": {}
-            })
-        if use_youtube:
-            tools.append({
-                "type": "mcp",
-                "server_label": "YouTube",
-                "server_url": f"https://apollo-khnbaduxb-composio.vercel.app/v3/mcp/69e11cae-8554-4fdf-8ec2-bc92ca2f65bc/mcp?include_composio_helper_actions=true",
-                "headers": {}
-            })
+        
 
         # Build request parameters
         request_params = {
