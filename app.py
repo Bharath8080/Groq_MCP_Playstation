@@ -62,7 +62,7 @@ USER_AVATAR = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_ic
 # Maintain chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "👋 Hi! I'm your research assistant — I fetch live web info and can tweet it for you."}
+        {"role": "assistant", "content": "👋 Hi! I'm your Deep Research assistant — I conduct structured, multi-step investigations using reasoning, live web data, and reliable sources to deliver accurate, well-organized insights with citations, summaries, and actionable recommendations while maintaining clarity, professionalism, and focus on your goals."}
     ]
 
 # Display history
@@ -108,7 +108,6 @@ if prompt := st.chat_input("Ask me anything..."):
                 "server_url": f"https://server.smithery.ai/@marcopesani/mcp-server-serper/mcp?api_key=318135fb-4ad4-4437-b916-9e19a8840f62&profile=yearning-rattlesnake-WM9iJg",
                 "headers": {}
             })
-        
         if use_linkup:
             tools.append({
                 "type": "mcp",
@@ -152,7 +151,7 @@ if prompt := st.chat_input("Ask me anything..."):
                     full_response + " <img src='https://media.tenor.com/HiVVJv-skJcAAAAM/pac-man.gif' width='22' style='vertical-align: middle;'/>",
                     unsafe_allow_html=True
                 )
-                time.sleep(0.00000000000000000000000000000001)
+                time.sleep(0.03)
 
         # Final text
         message_placeholder.markdown(full_response)
@@ -163,3 +162,20 @@ if prompt := st.chat_input("Ask me anything..."):
 
     # Save assistant reply
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+# ----------------------------
+# 📥 Download Report (Markdown)
+# ----------------------------
+if st.session_state.messages:
+    # Convert chat history to Markdown format
+    md_report = "# Deep Research Report\n\n"
+    for msg in st.session_state.messages:
+        role = "👤 User" if msg["role"] == "user" else "🤖 Assistant"
+        md_report += f"**{role}:**\n\n{msg['content']}\n\n---\n"
+
+    # Add download button
+    st.sidebar.download_button(
+        label="📥 Download Report (.pdf)",
+        data=md_report.encode("utf-8"),
+        file_name="deep_research_report.pdf",
+        mime="application/pdf"
+    )
